@@ -9,7 +9,7 @@ let tvList = []
 let allProducts = [...phoneList, ...tabletList, ...displayList, ...tvList]
 
 //fetch
-fetch('/proyecto final/data/data.json')
+fetch('/data/data.json')
     .then((res) => res.json())
     .then((res) => {
         phoneList = res.productos[0].phoneList;
