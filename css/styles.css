@@ -22,6 +22,7 @@ ul li {
 .icon-page {
   width: 3rem;
   margin: 0 0.5rem;
+  cursor: pointer;
 }
 
 .header-title {
@@ -56,6 +57,7 @@ ul li {
   right: 1rem;
   padding: 0.5rem;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .nav-menu:active,
@@ -139,6 +141,7 @@ ul li {
   margin-left: 2rem;
   border-bottom: 1px solid #000;
   position: relative;
+  cursor: pointer;
 }
 
 .categorys-button:active {
@@ -176,6 +179,7 @@ ul li {
   filter: drop-shadow(0 0 0.5rem #555);
   transform: rotateX(0deg);
   transition: all 0.3s;
+  background-image: linear-gradient(to top, transparent, #fff, transparent);
 }
 
 .products-btn {
@@ -188,6 +192,8 @@ ul li {
   position: relative;
   bottom: 0.4rem;
   padding: 0.1rem 0;
+  cursor: pointer;
+  transition: border-radius 0.3s;
 }
 
 .products-btn:active {
@@ -198,9 +204,51 @@ ul li {
   width: 100%;
   height: 30vh;
   object-fit: contain;
-  background-color: #fff;
+  background-color: transparent;
   transition: all 0.1s;
   transform: rotateX(0deg);
+  position: relative;
+  z-index: 200;
+}
+
+.products-product::after {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  top: 40%;
+  left: 42.5%;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  padding: 7px;
+  background: conic-gradient(
+        from 135deg at top,
+        var(--secondary-color) 90deg,
+        #0000 0
+      )
+      0 calc(50% - 4px) / 19px 9.5px,
+    radial-gradient(
+        farthest-side at bottom left,
+        #0000 calc(100% - 7px),
+        var(--secondary-color) calc(100% - 6px) 99%,
+        #0000
+      )
+      top right/50% 50% content-box content-box,
+    radial-gradient(
+        farthest-side at top,
+        #0000 calc(100% - 7px),
+        var(--secondary-color) calc(100% - 6px) 99%,
+        #0000
+      )
+      bottom / 100% 50% content-box content-box;
+  background-repeat: no-repeat;
+  animation: spinner-v8og74 1s infinite linear;
+}
+
+@keyframes spinner-v8og74 {
+  100% {
+    transform: rotate(1turn);
+  }
 }
 
 /*cart*/
@@ -286,6 +334,8 @@ ul li {
   color: #000;
   border: 2px solid #000;
   padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: border-radius 0.3s;
 }
 
 #reset:active,
@@ -343,6 +393,7 @@ ul li {
   transition: filter 0.2s;
   flex-grow: 1;
   text-align: right;
+  cursor: pointer;
 }
 
 .remove-btn:active {
@@ -475,6 +526,40 @@ ul li {
     right: 3rem;
   }
 
+  .nav-cart:hover {
+    animation: rotate-icon 1s linear normal;
+  }
+
+  @keyframes rotate-icon {
+    0% {
+      transform: rotate(0deg);
+    }
+    10% {
+      transform: rotate(-10deg);
+    }
+    20% {
+      transform: rotate(0deg);
+    }
+    30% {
+      transform: rotate(10deg);
+    }
+    40% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(-10deg);
+    }
+    60% {
+      transform: rotate(0deg);
+    }
+    70% {
+      transform: rotate(10deg);
+    }
+    80% {
+      transform: rotate(0deg);
+    }
+  }
+
   /*main*/
 
   .subtitle {
@@ -549,7 +634,7 @@ ul li {
 
   .categorys-button:hover::before {
     transition: width 0.3s;
-    width: 100%;
+    width: calc(100% + 1rem);
   }
 
   /*products*/
@@ -564,11 +649,17 @@ ul li {
     margin: 2rem 2vw;
   }
 
+  .products-btn:hover {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+  }
+
   /*cart*/
 
   .cart-container {
     transform: translate(120vw, -10vh);
-    border: 2px solid #000;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
     transition: unset;
   }
 
@@ -578,5 +669,10 @@ ul li {
     height: 70%;
     right: 0;
     transition: all 0.3s;
+  }
+
+  #buy:hover,
+  #reset:hover {
+    border-radius: 1rem;
   }
 }
