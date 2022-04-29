@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- sweet alert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- alertify -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"
+    />
+    <!-- script -->
+    <script defer src="js/script.js"></script>
+    <!-- css -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- icons -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav-container">
+        <div class="nav-menu"><i class='bx bx-menu-alt-left bx-md'></i></div>
+        <h1 class="header-title">Titulo</h1>
+        <div class="nav-cart"><i class='bx bx-cart bx-md'></i></div>
+      </nav>
+    </header>
+    <main class="main">
+      <h2 class="subtitle"></h2>
+      <div class="categorys-container">
+        <div class="categorys-phone">
+          <h2 class="categorys-title">Categorias</h2>
+          <ul class="categorys-list"> 
+            <li class="categorys-button" id="phones"><i class='bx bx-mobile-alt categorys-icon'></i> Telefonos</li>
+            <li class="categorys-button" id="tablets"><i class='bx bx-mobile-landscape categorys-icon'></i> Tablets</li>
+            <li class="categorys-button" id="displays"><i class='bx bx-desktop categorys-icon'></i >Monitores</li>
+            <li class="categorys-button" id="tvs"><i class='bx bx-tv categorys-icon'></i> Televisores</li>
+          </ul>
+        </div>
+      </div>
+      <div class="products-container">
+        <ul id="products">
+  
+        </ul>
+      </div>
+      <div class="cart-container">
+        <h2 class="cart-title">Carrito</h2>
+        <div class="cart-flex">
+          <h2 class="total">Total: $ 0</h2>
+          <button id="buy">Comprar</button>
+          <button id="reset">Vaciar carrito</button>
+        </div>
+        <ul class="cart-list">
+
+        </ul>
+        <p class="msg">El carrito se encuentra vacio</p>
+        <h4 class="info">Ultima compra:<h4/>
+        <ul class="lastBuy">
+      </div>
+
+      </ul>
+  </main>
+  <footer class="footer">
+
+  </footer>
+  </body>
+</html>

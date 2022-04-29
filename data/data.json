@@ -1,0 +1,176 @@
+{
+  "productos": [
+    {
+      "phoneList": [
+        {
+          "id": 1,
+          "name": "iphone",
+          "price": 206000,
+          "src": "https://cdn.pixabay.com/photo/2017/10/15/16/20/iphone-2854305_960_720.png"
+        },
+        {
+          "id": 2,
+          "name": "samsung",
+          "price": 102999,
+          "src": "https://images.samsung.com/is/image/samsung/mx_SM-G610MZKATCE_000000001_Front_black?$L1-Thumbnail$"
+        },
+        {
+          "id": 3,
+          "name": "motorola",
+          "price": 119999,
+          "src": "https://tienda.movistar.com.ar/media/catalog/product/2/0/2021_aruba_basic-pack_graphite-gray_front_2.png"
+        },
+        {
+          "id": 4,
+          "name": "xiaomi",
+          "price": 65999,
+          "src": "https://wmstatic.global.ssl.fastly.net/ml/200221-f-8e653ab9-1f87-42f0-904d-fcde4205c735.png?width=450&height=450"
+        },
+        {
+          "id": 5,
+          "name": "huawei",
+          "price": 39999,
+          "src": "https://wmstatic.global.ssl.fastly.net/ml/170220-f-b5eb7dfe-2d5e-43b3-9314-b12ef436e748.png?width=450&height=450"
+        },
+        {
+          "id": 6,
+          "name": "lg",
+          "price": 46000,
+          "src": "https://cdn.tmobile.com/content/dam/t-mobile/assets/faux-PDP/lg-v20/4740-faux-pdp-fg-lg-v20.png"
+        }
+      ]
+    },
+    {
+      "tabletList": [
+        {
+          "id": 7,
+          "name": "ipad",
+          "price": 94500,
+          "src": "https://wmstatic.global.ssl.fastly.net/ml/7180222-f-326cbbac-d7bf-4710-b025-2471e3424065.png?width=1120&height=760"
+        },
+        {
+          "id": 8,
+          "name": "amazon",
+          "price": 23999,
+          "src": "https://images.samsung.com/is/image/samsung/p6pim/ar/sm-t500nzaearo/gallery/ar-galaxy-tab-a7-t500-sm-t500nzaearo-332818011?$2160_1728_PNG$"
+        },
+        {
+          "id": 9,
+          "name": "lenovo",
+          "price": 40999,
+          "src": "https://www.lenovo.com/medias/lenovo-tab-m10-hd-front.png?context=bWFzdGVyfHJvb3R8MTEyNTY4fGltYWdlL3BuZ3xoMWUvaDhhLzk5ODU1ODA3OTM4ODYucG5nfDAxZTkzYzBiODFjNzJjOTcyOGExZTA2ZDZlNjI2NzcxOWYxM2JhZWE5MDU1MmYwMGI5YWRiMzA3ZGEzNDlhOWY&w=480"
+        },
+        {
+          "id": 10,
+          "name": "samsung",
+          "price": 72999,
+          "src": "https://images.samsung.com/is/image/samsung/es-galaxy-tab-s3-9-7-t820-sm-t820nzsaphe-000000001-front-silver-61680105"
+        },
+        {
+          "id": 11,
+          "name": "microsoft",
+          "price": 299300,
+          "src": "https://www.getac.com/wp-content/uploads/2021/03/T800_WIN10_2021-2.png"
+        },
+        {
+          "id": 12,
+          "name": "huawei",
+          "price": 34900,
+          "src": "https://consumer.huawei.com/content/dam/huawei-cbg-site/latam/latin/mkt/pdp/tablets/matepad-t-10/list.png"
+        },
+        {
+          "id": 13,
+          "name": "lg",
+          "price": 239499,
+          "src": "https://pngimg.com/uploads/tablet/tablet_PNG8565.png"
+        }
+      ]
+    },
+    {
+      "displayList": [
+        {
+          "id": 14,
+          "name": "dell",
+          "price": 64999,
+          "src": "https://www.seekpng.com/png/full/6-60397_monitor-png-image-dell-20-inch-lcd.png"
+        },
+        {
+          "id": 15,
+          "name": "gigabyte",
+          "price": 67999,
+          "src": "https://www.gigabyte.com/FileUpload/Global/KeyFeature/1468/innergigabyteimages//bg1_m.png"
+        },
+        {
+          "id": 16,
+          "name": "acer",
+          "price": 52229,
+          "src": "https://static.acer.com/up/Resource/Acer/Monitors/VG2/Images/20200709/Nitro-monitor-VG2-Series-VG272-X_VG272-P_VG272-LV_VG272-S-main.png"
+        },
+        {
+          "id": 17,
+          "name": "asus",
+          "price": 80999,
+          "src": "https://hardwareviews.com/wp-content/uploads/2022/01/ASUS-CES-2022-Monitores-1.png"
+        },
+        {
+          "id": 18,
+          "name": "samsung",
+          "price": 38999,
+          "src": "https://images.samsung.com/is/image/samsung/latin-t35f-lf24t350fhlxzp-frontblack-thumb-301443712"
+        },
+        {
+          "id": 19,
+          "name": "lg",
+          "price": 60990,
+          "src": "https://www.tiendalgonline.com/57773-large_default/lg-monitor-ultrawide-29-29wn600-waeu.jpg"
+        }
+      ]
+    },
+    {
+      "tvList": [
+        {
+          "id": 20,
+          "name": "hisense",
+          "price": 65999,
+          "src": "https://www.hisense.es/wp-content/uploads/2020/07/Main-H65U8QF.png"
+        },
+        {
+          "id": 21,
+          "name": "lg",
+          "price": 97999,
+          "src": "https://d391kzl17vtq1s.cloudfront.net/product_images/televisions/xiaomi-mi-tv-4a-32-mapache-guru-0.png"
+        },
+        {
+          "id": 22,
+          "name": "philips",
+          "price": 46999,
+          "src": "https://www.philips.es/c-dam/b2c/tv/categorypage/master/oled-tv-remake-2021/oled-706-frontal-l.png"
+        },
+        {
+          "id": 23,
+          "name": "sony",
+          "price": 209999,
+          "src": "https://www.sony.es/image/60fc808004d6860e433b5a4cafeb60d2?fmt=png-alpha&resMode=bisharp&wid=384"
+        },
+        {
+          "id": 24,
+          "name": "samsung",
+          "price": 106999,
+          "src": "https://images.samsung.com/is/image/samsung/latin-hd-t4300-un32t4300apxpa-frontblack-229189644?$720_576_PNG$"
+        },
+        {
+          "id": 25,
+          "name": "tcl",
+          "price": 44999,
+          "src": "https://www.pngkey.com/png/full/664-6648610_tcl-43s62-smart-tv.png"
+        },
+        {
+          "id": 26,
+          "name": "rca",
+          "price": 85999,
+          "src": "https://www.rca.com.ar/filemanager/source/productos/Sin%20ti%CC%81tulo-1.png"
+        }
+      ]
+    }
+  ]
+}
