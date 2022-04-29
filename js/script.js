@@ -176,7 +176,7 @@ function removeF(idList, cantidadStorage) {
         //estilo de eliminar color
         cartProduct.style = "background-color: #db6464"
         setTimeout(() => {
-            cartProduct.style = "background-color: #fff"
+            cartProduct.style = "background-color: unset"
         }, 300)
 
         //alertyify    
@@ -187,7 +187,7 @@ function removeF(idList, cantidadStorage) {
 
         let removed = cart.indexOf(searchProduct);
         cart.splice(removed, 1)
-        cartProduct.style = "transform: translateX(100%); transition: transform .3s";
+        cartProduct.style = "transform: translateX(100%); transition: transform .3s;";
 
         setTimeout(() => {
             cartList.removeChild(cartProduct);

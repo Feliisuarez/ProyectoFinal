@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+:root {
+  --secondary-color: #145684;
+  --bg-color: #c6dbea;
+}
+
 ul li {
   list-style: none;
 }
@@ -11,11 +16,18 @@ ul li {
 
 .header {
   height: 10vh;
-  color: #000;
+  color: #fff;
+}
+
+.icon-page {
+  width: 3rem;
+  margin: 0 0.5rem;
 }
 
 .header-title {
   font-size: 3rem;
+  color: var(--bg-color);
+  text-shadow: 0.2rem 0.2rem 0.1rem #000;
 }
 
 .nav-container {
@@ -27,7 +39,7 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--secondary-color);
   box-shadow: 0 0 1rem #000;
   z-index: 2000;
 }
@@ -66,13 +78,14 @@ ul li {
 .subtitle {
   font-size: 2rem;
   text-align: center;
-  margin-top: 5vh;
+  padding-top: 5vh;
   border-bottom: 1px solid #000;
   height: 10vh;
-  color: #fff;
-  text-shadow: 0 0 0.1rem #000, 0 0 0.1rem #000, 0 0 0.1rem #000,
-    0 0 0.1rem #000;
+  color: var(--primary-color);
+  text-shadow: 0 0 0.1rem #fff, 0 0 0.1rem #fff, 0 0 0.1rem #fff,
+    0 0 0.1rem #fff;
   letter-spacing: 0.2rem;
+  background-color: #000;
 }
 
 .categorys-container {
@@ -206,7 +219,7 @@ ul li {
 }
 
 .open {
-  background-color: #fff;
+  background-color: var(--bg-color);
   transform: translate(0, 0);
   border-radius: unset;
   border-bottom-left-radius: 1rem;
@@ -229,7 +242,6 @@ ul li {
   justify-content: space-around;
   padding: 1rem 0;
   pointer-events: none;
-  background-color: #0005;
 }
 
 .total {
@@ -248,7 +260,7 @@ ul li {
   position: absolute;
   bottom: 0;
   left: 0;
-  border-bottom: 5px dashed #0005;
+  border-bottom: 5px dashed #0003;
   animation: cart-line 10s linear normal infinite;
 }
 
@@ -270,14 +282,16 @@ ul li {
 #buy {
   font-size: 1rem;
   pointer-events: all;
-  background-color: #fff;
-  padding: 0.2rem 0.5rem;
-  border-radius: 1rem;
+  background-color: var(--bg-color);
+  color: #000;
+  border: 2px solid #000;
+  padding: 0.5rem 1rem;
 }
 
 #reset:active,
 #buy:active {
   background-color: #0003;
+  border: 1px solid #000;
 }
 
 .cart-list {
@@ -363,20 +377,24 @@ ul li {
 .ajs-message {
   border-radius: 1rem !important;
   padding: 1rem 0 !important;
-  right: 20vw !important;
+  right: 21vw !important;
   box-shadow: 0.5rem -0.5rem 0.5rem #0005 !important;
 }
 
 /*footer*/
 
 .footer {
-  background-color: #000;
+  background-color: var(--secondary-color);
   height: 40vh;
 }
 
 /*media querys*/
 
 @media screen and (max-width: 300px) {
+  .icon-page {
+    display: none;
+  }
+
   .categorys-list {
     justify-content: space-evenly;
   }
@@ -396,7 +414,7 @@ ul li {
 
 @media screen and (min-width: 600px) {
   .categorys-container {
-    transform: translateX(-100%) rotate(90deg);
+    transform: translateX(-150%) rotate(90deg);
   }
 
   .show {
@@ -440,6 +458,11 @@ ul li {
 @media screen and (min-width: 1000px) {
   /*header*/
 
+  .icon-page {
+    position: absolute;
+    left: 2rem;
+  }
+
   .nav-menu {
     display: none;
   }
@@ -452,6 +475,12 @@ ul li {
 
   .subtitle {
     grid-area: subtitle;
+    transition: all 0.3s;
+  }
+
+  .subtitle:hover {
+    color: #fff;
+    text-shadow: none;
   }
 
   .main {
@@ -469,6 +498,7 @@ ul li {
   .categorys-container {
     transform: unset;
     background-image: none;
+    background-color: var(--bg-color);
     border-right: 1px solid #000;
     border-bottom: 1px solid #000;
     position: unset;
@@ -492,7 +522,7 @@ ul li {
     top: -0.5rem;
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--bg-color);
   }
 
   .categorys-button {
