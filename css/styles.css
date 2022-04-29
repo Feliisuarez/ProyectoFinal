@@ -390,7 +390,11 @@ ul li {
 
 /*media querys*/
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 400px) {
+  .header-title {
+    font-size: 2rem;
+  }
+
   .icon-page {
     display: none;
   }
