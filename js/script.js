@@ -18,6 +18,9 @@ fetch('data/data.json')
         tvList = res.productos[3].tvList;
 
         allProducts = [...phoneList, ...tabletList, ...displayList, ...tvList]
+
+        mostrarProductos(phoneList)
+        subtitle.innerHTML = "Telefonos"
     })
 
 //elementos del html
@@ -230,7 +233,7 @@ storage.forEach(element => {
 //funcion de carrito msg compra
 function cartStatus() {
 
-    cart.length == 0 ? msg.style.display = "block" : msg.style.display = "none";
+    cart.length == 0 ? setTimeout(() => msg.style.filter = "opacity(1)", 500) : msg.style.filter = "opacity(0)";
 
 }
 
