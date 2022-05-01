@@ -37,8 +37,33 @@ let msg = document.querySelector(".msg");
 
 let subtitle = document.querySelector(".subtitle");
 
+let cartNum = document.querySelector(".nav-cart-num");
+
 let cart = []
 let total = 0;
+
+//localStorage
+
+let storage = JSON.parse(localStorage.getItem("carrito")) || [];
+let storagePrice = JSON.parse(localStorage.getItem("total")) || 0;
+
+//establece el carrito desde el storage
+
+storage.forEach(element => {
+
+    const { name, price, cantidad, id, src } = element; //desestructuracion de objeto
+
+    cart.push(element);
+    let li = document.createElement("li");
+    li.classList.add('my-product');
+    li.setAttribute('id', `cantidad${id}`);
+    li.innerHTML = `<span class="quantity">${cantidad}</span> <img src=${src} class="cart-imgs"> ${name} : $${price} <button name="button" onclick=removeF(${id},${cantidad}) class="remove-btn"><i class='bx bx-trash-alt bx-md'></i></button>`;
+    cartList.appendChild(li);
+
+    //precio
+    total = storagePrice;
+    totalPrice.innerHTML = `Total: $ ${storagePrice}`;
+});
 
 //evento para seleccionar una categoria
 
@@ -46,7 +71,7 @@ button.forEach(btn => {
     btn.addEventListener('click', () => {
         products.innerHTML = ""; //resetea los productos
 
-        //segun el boton que se toque cambia la lista para luego imprimirla
+        //segun el boton que se toque cambia la lista para luego imprimirla y cambia el titulo
 
         if (btn.id == "phones") {
             mostrarProductos(phoneList);
@@ -68,8 +93,50 @@ button.forEach(btn => {
     });
 })
 
-//funcion que muestra la categoria
+//funcion que actualiza la cantidad total de productos en el carrito
+let cartNumCount = 0;
 
+function totalQuantity() {
+    cartNumCount = 0; //resetea por si se ejecuta mas de una ocacion
+    cart.forEach(element => {
+        cartNumCount += element.cantidad //suma las cantidades de cada producto en el carrito
+    });
+    cartNum.innerHTML = cartNumCount //imprime el numero
+
+    //estilos
+    cartNum.textContent == 0 ? cartNum.style.display = "none" : cartNum.style.display = "flex";
+}
+
+totalQuantity(); //actualiza la cantidad
+
+//funcion que actualiza la cantidad de productos agregados de la lista
+function productListQuantity(idList, idRemoved) {
+    let productQuantity = cart.find(item => item.id == idList); //busca el producto en el carrito para sacar la cantidad 
+    let productsQuantity = document.querySelectorAll(".products-quantity")  //elemento html
+
+    if (productQuantity) { //si se encuentra en el carrito
+        productsQuantity.forEach(element => {
+            if (productQuantity.id == element.id) { //busca por id al elemento html para actualizarlo 
+                element.innerHTML = productQuantity.cantidad; //imprime
+
+                //estilos
+                element.style.display = "flex";
+            }
+        });
+    } else { //si se acaba de eliminar del carrito
+        productsQuantity.forEach(element => {
+            if (element.id == idRemoved) {
+                element.innerHTML = 0; //imprime
+
+                //estilos
+                element.previousElementSibling.previousElementSibling.style = "background-color: unset"
+                element.style.display = "none";
+            }
+        });
+    }
+}
+
+//funcion que muestra la categoria
 function mostrarProductos(array) {
     array.forEach(element => {
 
@@ -78,7 +145,7 @@ function mostrarProductos(array) {
         //imprime el producto
 
         let li = document.createElement("li");
-        li.innerHTML = `<p class="products-text">${nameList} : $${priceList}</p> <img src=${srcList} class="products-imgs"> <i class='bx bx-cart-add bx-md products-btn' id="${idList}" ></i>`;
+        li.innerHTML = `<p class="products-name">${nameList}</p> <img src=${srcList} class="products-imgs"> <i class='bx bx-cart-add bx-md products-btn' id="${idList}" ></i> <span class="products-quantity" id="${idList}">0</span> <p class="products-price">$ ${priceList}</p>`;
         li.classList.add('products-product');
         products.appendChild(li);
         li.style.pointerEvents = "none";
@@ -105,11 +172,17 @@ function mostrarProductos(array) {
                 btn.parentElement.style = "transform: rotateX(0deg); filter: drop-shadow(0 0rem 0.5rem #555);";
             }, 300)
 
-            //actualiza
+            //actualizadores
+
+            totalQuantity();//actualiza la cantidad del carrito
+            productListQuantity(idList); //actualiza la cantidad del producto en la lista
+
+            //actualiza el storage
             cartStatus();
             localStorage.setItem("carrito", JSON.stringify(cart));
             localStorage.setItem("total", JSON.stringify(total));
         })
+        productListQuantity(idList); //actualiza la cantidad del producto en la lista
     })
 
 };
@@ -137,6 +210,7 @@ function addCart(idList) { //recibe el id
 
     } else { //si no esta lo busca con el id en el array general y lo crea
         let productEncontrado = allProducts.find(item => item.id == idList);
+
         productEncontrado.cantidad = 1; //como no esta le crea la cantidad
         cart.push(productEncontrado); //agrega el producto creado al carrito
 
@@ -196,39 +270,20 @@ function removeF(idList, cantidadStorage) {
         //alertyify
         alertify.set('notifier', 'position', 'bottom-left');
         alertify.error(`<b>${searchProduct.name}</b> se elimino del carrito`);
+
     }
 
     total -= searchProduct?.price;  //resta el precio
     totalPrice.innerHTML = `Total: $ ${total}`; //imprime el total del precio
 
-    //actualiza
+    totalQuantity(); //actualiza la cantidad del carrito
+    productListQuantity(idList, searchProduct.id); //actualiza la cantidad del producto en la lista
+
+    //actualiza el storage
     cartStatus();
     localStorage.setItem("carrito", JSON.stringify(cart));
     localStorage.setItem("total", JSON.stringify(total));
 }
-
-//localStorage
-
-let storage = JSON.parse(localStorage.getItem("carrito")) || [];
-let storagePrice = JSON.parse(localStorage.getItem("total")) || 0;
-
-//establece el carrito 
-
-storage.forEach(element => {
-
-    const { name, price, cantidad, id, src } = element; //desestructuracion de objeto
-
-    cart.push(element);
-    let li = document.createElement("li");
-    li.classList.add('my-product');
-    li.setAttribute('id', `cantidad${id}`);
-    li.innerHTML = `<span class="quantity">${cantidad}</span> <img src=${src} class="cart-imgs"> ${name} : $${price} <button name="button" onclick=removeF(${id},${cantidad}) class="remove-btn"><i class='bx bx-trash-alt bx-md'></i></button>`;
-    cartList.appendChild(li);
-
-    //precio
-    total = storagePrice;
-    totalPrice.innerHTML = `Total: $ ${storagePrice}`;
-});
 
 //funcion de carrito msg compra
 function cartStatus() {
@@ -239,10 +294,11 @@ function cartStatus() {
 
 cartStatus();
 
+//evento para comprar
+
 const info = document.querySelector('.info');
 const lastBuy = document.querySelector('.lastBuy');
 
-//evento para comprar
 buyBtn.addEventListener('click', () => {
     if (cart.length == 0) {
         //sweet alert
@@ -305,7 +361,18 @@ function resetBtn() {
     total = 0;
     totalPrice.innerHTML = `Total: $ ${total}`;
 
-    //actualiza
+    totalQuantity();//actualiza la cantidad
+
+    //resetea todas las cantidades de los productos en lista
+    let productsQuantity = document.querySelectorAll(".products-quantity")
+    productsQuantity.forEach(element => {
+        element.innerHTML = 0;
+        //estilos
+        element.style.display = "none";
+        element.previousElementSibling.previousElementSibling.style = "background-color: unset"
+    });
+
+    //actualiza el storage
     cartStatus();
     localStorage.setItem("carrito", JSON.stringify(cart));
     localStorage.setItem("total", JSON.stringify(total));
