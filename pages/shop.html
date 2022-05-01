@@ -18,21 +18,21 @@
       href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"
     />
     <!-- script -->
-    <script defer src="js/script.js"></script>
+    <script defer src="../js/script.js"></script>
     <!-- css -->
-    <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/shop.css" />
     <!-- icons -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- icon web -->
-    <link rel="icon" href="assets/svgs/icon.svg">
+    <link rel="icon" href="../assets/svgs/icon.svg">
   </head>
   <body>
     <header class="header">
       <nav class="nav-container">
-        <a href="index.html">
-            <img src="../assets/svgs/icon.svg" alt="icon" class="icon-page">
-            <h1 class="header-title">UrDevice</h1>
+        <a href="../index.html">
+          <img src="../assets/svgs/icon.svg" alt="icon" class="icon-page">
+          <h1 class="header-title">UrDevice</h1>
         </a>
         <div class="nav-menu"><i class='bx bx-menu-alt-left bx-md'></i></div>
         <div class="nav-cart"><i class='bx bx-cart bx-md'></i></div>
@@ -40,18 +40,23 @@
       </nav>
     </header>
     <main class="main">
+      <h2 class="subtitle"></h2>
       <div class="categorys-container">
         <div class="categorys-phone">
           <h2 class="categorys-title">Categorias</h2>
           <ul class="categorys-list"> 
-            <li class="categorys-button" id="phones"><i class='bx bx-mobile-alt categorys-icon'></i> <a href="pages/shop.html">Telefonos</a></li>
-            <li class="categorys-button" id="tablets"><i class='bx bx-mobile-landscape categorys-icon'></i> <a href="pages/shop.html">Tablets</a></li>
-            <li class="categorys-button" id="displays"><i class='bx bx-desktop categorys-icon'></i ><a href="pages/shop.html">Monitores</a></li>
-            <li class="categorys-button" id="tvs"><i class='bx bx-tv categorys-icon'></i> <a href="pages/shop.html">Televisores</a></li>
+            <li class="categorys-button" id="phones"><i class='bx bx-mobile-alt categorys-icon'></i> Telefonos</li>
+            <li class="categorys-button" id="tablets"><i class='bx bx-mobile-landscape categorys-icon'></i> Tablets</li>
+            <li class="categorys-button" id="displays"><i class='bx bx-desktop categorys-icon'></i >Monitores</li>
+            <li class="categorys-button" id="tvs"><i class='bx bx-tv categorys-icon'></i> Televisores</li>
           </ul>
         </div>
       </div>
-      
+      <div class="products-container">
+        <ul id="products">
+  
+        </ul>
+      </div>
       <div class="cart-container">
         <h2 class="cart-title">Carrito</h2>
         <h2 class="total">Total: $ 0</h2>
@@ -65,9 +70,9 @@
         <p class="msg">El carrito se encuentra vacio</p>
         <h4 class="info">Ultima compra:<h4/>
         <ul class="lastBuy">
-            
+          
         </ul>
-    </div>
+      </div>
   </main>
   <footer class="footer">
 
