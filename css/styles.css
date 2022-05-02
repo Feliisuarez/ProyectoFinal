@@ -121,7 +121,7 @@ a {
   top: 0;
   transform: translateX(-100%);
   transition: transform 0.2s;
-  z-index: 150;
+  z-index: 400;
 }
 
 .show {
@@ -738,7 +738,7 @@ a {
 
   .categorys-icon {
     left: -3rem;
-    top: -0.5rem;
+    top: -0rem;
     padding: 0.5rem;
     border-radius: 50%;
     background-color: var(--bg-color);

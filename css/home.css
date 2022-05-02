@@ -1,14 +1,32 @@
+div ul li a:visited {
+  color: #000;
+}
+/*header*/
+
+.nav-cart-num {
+  padding: 0.8rem;
+}
+
 .header-title {
   font-weight: 800;
 }
 
+/*header*/
 .main {
   display: block;
 }
 
-.home-categorys-container {
-  display: none;
+/*menu*/
+.categorys-list {
+  padding: 0;
 }
+
+.categorys-title {
+  transition: all 0.3s;
+  font-size: 1.8rem;
+}
+
+/*¨carousel*/
 
 .carousel {
   width: 100vw;
@@ -42,10 +60,8 @@
 /*about us*/
 
 .about-us {
-  font-size: 1.5rem;
   border-bottom: 2px solid #000;
-  margin: 2rem 30vw 1rem 0;
-  padding-left: 5vw;
+  margin: 2rem 0;
 }
 
 .about-us-container {
@@ -53,22 +69,16 @@
   flex-direction: column;
 }
 
-.about-us-text {
-  font-size: 1.3rem;
-  margin: 2rem 0 0 0;
-}
-
 .about-us-video {
   width: 100%;
 }
 
+/*media querys*/
+
 @media screen and (min-width: 600px) {
   .about-us-container {
     flex-direction: row;
-  }
-
-  .about-us-text {
-    width: 50vw;
+    margin: 0 5vw;
   }
 
   .about-us-video {
@@ -77,7 +87,44 @@
 }
 
 @media screen and (min-width: 1000px) {
+  /*main*/
   .about-us-container {
-    margin: 0 5vw;
+    margin: 0 10vw;
+  }
+
+  .categorys-phone {
+    margin: 0;
+  }
+
+  .categorys-title {
+    margin-left: 10%;
+  }
+
+  .categorys-title:hover {
+    font-size: 2rem;
+  }
+
+  .categorys-list {
+    width: 90%;
+    margin-left: 10%;
+  }
+  .categorys-container {
+    width: 20vw;
+    height: 10vh;
+    position: fixed;
+    z-index: 5000;
+    top: 0;
+    left: 9rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    box-shadow: 0 0 0.5rem #000;
+  }
+
+  .home-show {
+    height: 90vh;
+    box-shadow: 0 0.5rem 0.5rem #000;
   }
 }
