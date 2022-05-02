@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: cursive;
 }
 
 :root {
@@ -10,6 +11,10 @@
 
 ul li {
   list-style: none;
+}
+
+a {
+  text-decoration: none;
 }
 
 /*header*/
@@ -22,13 +27,13 @@ ul li {
 .icon-page {
   width: 3rem;
   margin: 0 0.5rem;
-  cursor: pointer;
 }
 
 .header-title {
   font-size: 3rem;
   color: var(--bg-color);
   text-shadow: 0.2rem 0.2rem 0.1rem #000;
+  transition: all 0.3s;
 }
 
 .nav-container {
@@ -191,6 +196,7 @@ ul li {
   bottom: 1rem;
   right: 1.5rem;
   font-size: 1.5rem;
+  pointer-events: none;
 }
 
 .products-price::first-letter {
@@ -201,7 +207,7 @@ ul li {
 .products-quantity {
   position: absolute;
   bottom: 1rem;
-  left: 1.5rem;
+  left: 2rem;
   display: none;
   border-radius: 50%;
   border: 2px solid #000;
@@ -210,6 +216,7 @@ ul li {
   justify-content: center;
   align-items: center;
   padding: 0.1em;
+  pointer-events: none;
 }
 
 .products-product {
@@ -230,7 +237,7 @@ ul li {
   border-bottom-right-radius: 50%;
   pointer-events: all;
   position: relative;
-  bottom: 0.4rem;
+  bottom: 0.5rem;
   padding: 0.1rem 0;
   cursor: pointer;
   transition: border-radius 0.3s;
@@ -308,6 +315,7 @@ ul li {
   border-radius: 50%;
   transform: translate(90vw, -10vh);
   transition: all 0.3s;
+  z-index: 200;
 }
 
 .open {
@@ -452,18 +460,25 @@ ul li {
   filter: opacity(1);
   user-select: none;
   transition: filter 0.3s;
+  color: #000a;
+}
+
+.last-buy-container {
+  position: relative;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 2px solid #000;
+  background-color: #0003;
+  display: none;
 }
 
 .info {
-  display: none;
-  font-size: 1.5rem;
-  text-align: center;
   padding: 1rem 0;
-  border-top: 2px solid #000;
 }
 
 .lastBuy {
-  font-size: 1.5rem;
   margin: 1rem 0 1rem 1rem;
 }
 
@@ -480,10 +495,71 @@ ul li {
 
 .footer {
   background-color: var(--secondary-color);
-  height: 40vh;
+  overflow: hidden;
+}
+
+.footer-icon-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 30vh;
+}
+
+.footer-icon {
+  display: flex;
+  border: 0.25em solid var(--bg-color);
+  padding: 1em;
+  color: var(--bg-color);
+  background-color: transparent;
+  border-radius: 1em;
+  outline: none;
+  box-shadow: 0 0 1em 0.25em var(--bg-color), 0 0 4em 1em #0003,
+    inset 0 0 0.75em 0.25em var(--bg-color);
+  text-shadow: 0 0 0.5em var(--bg-color);
+  position: relative;
+  transition: all 0.3s;
+}
+
+.footer-icon::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--bg-color);
+  filter: blur(2em);
+  opacity: 0.7;
+  transform: perspective(1.5em) rotateX(35deg) scale(1, 0.6);
+}
+
+.footer-icon:active {
+  box-shadow: 0 0 0.6em 0.25em var(--bg-color), 0 0 2.5em 2em #000,
+    inset 0 0 0.5em 0.25em var(--bg-color);
+}
+
+.footer-hr {
+  width: 90%;
+  margin: 0 5%;
+  color: #fff;
+}
+
+.footer-copyright {
+  text-align: center;
+  color: #000;
+  margin: 0 10%;
+  text-shadow: 0 0 1rem var(--bg-color);
 }
 
 /*media querys*/
+
+@media screen and (max-width: 350px) {
+  .products-price {
+    font-size: 1rem;
+  }
+}
 
 @media screen and (max-width: 400px) {
   .header-title {
@@ -559,7 +635,13 @@ ul li {
 
   .icon-page {
     position: absolute;
+    top: 0.5rem;
     left: 2rem;
+  }
+
+  .header-title:hover {
+    text-shadow: 0rem 0rem 0.1rem #000;
+    font-weight: 500;
   }
 
   .nav-menu {
@@ -722,5 +804,18 @@ ul li {
   #buy:hover,
   #reset:hover {
     border-radius: 1rem;
+  }
+
+  /*footer*/
+
+  .footer-icon {
+    padding: 1rem 3rem;
+  }
+
+  .footer-icon:hover {
+    color: #000;
+    background-color: var(--bg-color);
+    box-shadow: 0 0 1em 0.25em var(--bg-color), 0 0 4em 2em var(--bg-color),
+      inset 0 0 0.75em 0.25em var(--bg-color);
   }
 }

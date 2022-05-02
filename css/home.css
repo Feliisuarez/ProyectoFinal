@@ -1,0 +1,83 @@
+.header-title {
+  font-weight: 800;
+}
+
+.main {
+  display: block;
+}
+
+.home-categorys-container {
+  display: none;
+}
+
+.carousel {
+  width: 100vw;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 100;
+  display: flex;
+  margin: 5vh 0 0;
+  width: 15vw;
+}
+
+.home-img {
+  height: 90vh;
+  object-fit: cover;
+}
+
+.img-title {
+  position: relative;
+  z-index: 200;
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.img-text {
+  font-size: 1.5rem;
+  text-shadow: 0 0 1rem #000, 0 0 1rem #000;
+}
+
+/*about us*/
+
+.about-us {
+  font-size: 1.5rem;
+  border-bottom: 2px solid #000;
+  margin: 2rem 30vw 1rem 0;
+  padding-left: 5vw;
+}
+
+.about-us-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us-text {
+  font-size: 1.3rem;
+  margin: 2rem 0 0 0;
+}
+
+.about-us-video {
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .about-us-container {
+    flex-direction: row;
+  }
+
+  .about-us-text {
+    width: 50vw;
+  }
+
+  .about-us-video {
+    width: 50vw;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .about-us-container {
+    margin: 0 5vw;
+  }
+}

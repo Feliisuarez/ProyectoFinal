@@ -296,8 +296,12 @@ cartStatus();
 
 //evento para comprar
 
-const info = document.querySelector('.info');
+const info = document.querySelector('.last-buy-container');
 const lastBuy = document.querySelector('.lastBuy');
+
+const infoTotal = document.querySelector('.info-total');
+
+let lastTotal = 0;
 
 buyBtn.addEventListener('click', () => {
     if (cart.length == 0) {
@@ -305,6 +309,7 @@ buyBtn.addEventListener('click', () => {
         Swal.fire({
             icon: 'error',
             title: 'El carrito se encuentra vacio',
+            confirmButtonColor: "var(--secondary-color)",
         })
 
         //alertify
@@ -312,6 +317,7 @@ buyBtn.addEventListener('click', () => {
 
         //ultima compra
         lastBuy.innerHTML = "";
+        infoTotal.innerHTML = "";
         info.style.display = "none";
 
     } else {
@@ -323,14 +329,24 @@ buyBtn.addEventListener('click', () => {
 
         //ultima compra
         lastBuy.innerHTML = "";
+        infoTotal.innerHTML = "";
         info.style.display = "none";
 
+        //imprime la ultima compra
         cart.forEach(element => {
+            let src = allProducts.find(item => item.id == element.id); //busca por id en el array general para conseguir la imagen
+
             let li = document.createElement("li");
-            li.innerHTML += `${element.name} (${element.cantidad}): $ ${element.price}`;
+            li.innerHTML += `<span class="quantity">${element?.cantidad}</span> <img src=${src.src} alt="producto en carrito" class="cart-imgs"> ${element?.name} : $${element?.price}`;
+            li.classList.add('my-product');
             lastBuy.appendChild(li);
-            info.style.display = "block"
+            info.style.display = "flex";
+
+            lastTotal += element.price * element.cantidad; //acumula el total
+            infoTotal.innerHTML = ""; //resetea el texto del total
+            infoTotal.innerHTML += `Total: $ ${lastTotal}`;
         });
+        lastTotal = 0; //resetea el total
 
         //alertify
         alertify.dismissAll();
@@ -347,6 +363,7 @@ reset.addEventListener('click', () => {
 
     //ultima compra
     lastBuy.innerHTML = "";
+    infoTotal.innerHTML = "";
     info.style.display = "none";
 
     //alertify

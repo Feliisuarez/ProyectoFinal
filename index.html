@@ -27,16 +27,20 @@
     <link rel="icon" href="assets/svgs/icon.svg">
   </head>
   <body>
+    <!-- header -->
     <header class="header">
       <nav class="nav-container">
-        <img src="assets/svgs/icon.svg" alt="icon" class="icon-page">
-        <h1 class="header-title">UrDevice</h1>
+        <a href="home.html"><img src="assets/svgs/icon.svg" alt="icon" class="icon-page"></a>
+        <a href="home.html"><h1 class="header-title">UrDevice</h1></a>
         <div class="nav-menu"><i class='bx bx-menu-alt-left bx-md'></i></div>
         <div class="nav-cart"><i class='bx bx-cart bx-md'></i></div>
         <span class="nav-cart-num"></span>
       </nav>
     </header>
+    <!-- header end -->
+    <!-- main -->
     <main class="main">
+    <!-- menu -->
       <h2 class="subtitle"></h2>
       <div class="categorys-container">
         <div class="categorys-phone">
@@ -49,14 +53,18 @@
           </ul>
         </div>
       </div>
+    <!-- menu end -->
+    <!-- products list -->
       <div class="products-container">
         <ul id="products">
   
         </ul>
       </div>
+    <!-- products list end -->
+    <!-- cart -->
       <div class="cart-container">
-        <h2 class="cart-title">Carrito</h2>
-        <h2 class="total">Total: $ 0</h2>
+        <h3 class="cart-title">Carrito</h3>
+        <h3 class="total">Total: $ 0</h3>
         <div class="cart-flex">
           <button id="buy">Comprar</button>
           <button id="reset">Vaciar carrito</button>
@@ -65,14 +73,27 @@
 
         </ul>
         <p class="msg">El carrito se encuentra vacio</p>
-        <h4 class="info">Ultima compra:<h4/>
+        <div class="last-buy-container"> 
+          <h4 class="info">Ultima compra:<h4/>
+          <h4 class="info-total"><h4/>
+        </div>
         <ul class="lastBuy">
       </div>
 
       </ul>
+    <!-- cart end -->
   </main>
+    <!-- main end -->
+    <!-- footer -->
   <footer class="footer">
-
+    <ul class="footer-icon-list">
+      <li><a class="footer-icon" href="https://www.instagram.com" target="__blank"><i class='bx bxl-instagram bx-md'></i></a></li>
+      <li><a class="footer-icon" href="https://www.facebook.com" target="__blank"><i class='bx bxl-facebook bx-md' ></i></a></li>
+      <li><a class="footer-icon" href="https://www.youtube.com" target="__blank"><i class='bx bxl-youtube bx-md'></i></a></li>
+    </ul>
+    <hr class="footer-hr">
+    <p class="footer-copyright">COPYRIGHT 2022 - TODOS LOS DERECHOS RESERVADOS</p>
   </footer>
+    <!-- footer end -->
   </body>
 </html>
