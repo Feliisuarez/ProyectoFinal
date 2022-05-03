@@ -198,7 +198,7 @@ a {
 .products-price {
   position: absolute;
   bottom: 1rem;
-  right: 1.5rem;
+  right: 1rem;
   font-size: 1.5rem;
   pointer-events: none;
 }
@@ -492,7 +492,7 @@ a {
 .ajs-message {
   border-radius: 1rem !important;
   padding: 1rem 0 !important;
-  right: 21vw !important;
+  right: 25vw !important;
   box-shadow: 0.5rem -0.5rem 0.5rem #0005 !important;
 }
 
