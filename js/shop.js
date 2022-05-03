@@ -8,8 +8,56 @@ let tvList = []
 //array general
 let allProducts = [...phoneList, ...tabletList, ...displayList, ...tvList]
 
-//subtitulo
-let subtitle = document.querySelector(".subtitle");
+//funcion que muestra los productos de la categoria
+function mostrarProductos(array) {
+    array.forEach(element => {
+
+        const { name: nameList, price: priceList, id: idList, src: srcList } = element; //desestructuracion de objeto
+
+        //imprime el producto
+
+        let li = document.createElement("li");
+        li.innerHTML = `<p class="products-name">${nameList}</p> <img src=${srcList} class="products-imgs"> <i class='bx bx-cart-add bx-md products-btn' id="${idList}" ></i> <span class="products-quantity" id="${idList}">0</span> <p class="products-price">$${priceList}</p>`;
+        li.classList.add('products-product');
+        products.appendChild(li);
+        li.style.pointerEvents = "none";
+
+        //declara los botones creados
+        let btn = document.getElementById(`${idList}`)
+
+        //evento para agregar agregar producto
+        btn.addEventListener('click', () => {
+
+            //funciones que reciben el id del boton agregar
+            addCart(idList);
+
+            //efecto de color en imagen
+            btn.previousElementSibling.style = "background-color: #63be78";
+            btn.parentElement.style = "transform: rotateX(30deg); filter: drop-shadow(0 1rem 0.5rem #555);";
+            setTimeout(() => {
+                btn.previousElementSibling.style = "background-color: #fff";
+            }, 150)
+
+            btn.previousElementSibling.previousElementSibling.style = "background-color: #63be78";
+            setTimeout(() => {
+                btn.previousElementSibling.previousElementSibling.style = "background-color: #fff";
+                btn.parentElement.style = "transform: rotateX(0deg); filter: drop-shadow(0 0rem 0.5rem #555);";
+            }, 300)
+
+            //actualizadores
+
+            totalQuantity();//actualiza la cantidad del carrito
+            productListQuantity(idList); //actualiza la cantidad del producto en la lista
+
+            //actualiza el storage
+            cartStatus();
+            localStorage.setItem("carrito", JSON.stringify(cart));
+            localStorage.setItem("total", JSON.stringify(total));
+        })
+        productListQuantity(idList); //actualiza la cantidad del producto en la lista
+    })
+
+};
 
 //funcion carrito
 
@@ -56,56 +104,8 @@ function addCart(idList) { //recibe el id
     totalPrice.innerHTML = `Total: $ ${total}`;
 }
 
-//funcion que muestra los productos de la categoria
-function mostrarProductos(array) {
-    array.forEach(element => {
-
-        const { name: nameList, price: priceList, id: idList, src: srcList } = element; //desestructuracion de objeto
-
-        //imprime el producto
-
-        let li = document.createElement("li");
-        li.innerHTML = `<p class="products-name">${nameList}</p> <img src=${srcList} class="products-imgs"> <i class='bx bx-cart-add bx-md products-btn' id="${idList}" ></i> <span class="products-quantity" id="${idList}">0</span> <p class="products-price">$ ${priceList}</p>`;
-        li.classList.add('products-product');
-        products.appendChild(li);
-        li.style.pointerEvents = "none";
-
-        //declara los botones creados
-        let btn = document.getElementById(`${idList}`)
-
-        //evento para agregar agregar producto
-        btn.addEventListener('click', () => {
-
-            //funciones que reciben el id del boton agregar
-            addCart(idList);
-
-            //efecto de color en imagen
-            btn.previousElementSibling.style = "background-color: #63be78";
-            btn.parentElement.style = "transform: rotateX(30deg); filter: drop-shadow(0 1rem 0.5rem #555);";
-            setTimeout(() => {
-                btn.previousElementSibling.style = "background-color: #fff";
-            }, 150)
-
-            btn.previousElementSibling.previousElementSibling.style = "background-color: #63be78";
-            setTimeout(() => {
-                btn.previousElementSibling.previousElementSibling.style = "background-color: #fff";
-                btn.parentElement.style = "transform: rotateX(0deg); filter: drop-shadow(0 0rem 0.5rem #555);";
-            }, 300)
-
-            //actualizadores
-
-            totalQuantity();//actualiza la cantidad del carrito
-            productListQuantity(idList); //actualiza la cantidad del producto en la lista
-
-            //actualiza el storage
-            cartStatus();
-            localStorage.setItem("carrito", JSON.stringify(cart));
-            localStorage.setItem("total", JSON.stringify(total));
-        })
-        productListQuantity(idList); //actualiza la cantidad del producto en la lista
-    })
-
-};
+//subtitulo
+let subtitle = document.querySelector(".subtitle");
 
 // al ir a la tienda se cargan mediante el localStorage la opcion elegida desde el home
 function init() {
