@@ -1,6 +1,8 @@
 //elementos del html
 
-let products = document.querySelector("#products");
+let products = document.querySelector("#products"); //contenedor de productos
+
+//dentro del carrito
 let cartList = document.querySelector(".cart-list");
 let totalPrice = document.querySelector(".total");
 let buyBtn = document.querySelector("#buy");
@@ -181,16 +183,13 @@ buyBtn.addEventListener('click', () => {
         //alertify
         alertify.dismissAll();
 
-        //ultima compra
-        lastBuy.innerHTML = "";
-        infoTotal.innerHTML = "";
-        info.style.display = "none";
-
     } else {
+
         //sweet alert
+
         Swal.fire({
             icon: 'success',
-            title: 'Compra realizada!',
+            title: 'Gracias por su compra',
             confirmButtonColor: "var(--secondary-color)",
         })
 
@@ -215,20 +214,16 @@ buyBtn.addEventListener('click', () => {
         //alertify
         alertify.dismissAll();
         alertify.warning('Se a vaciado el carrito');
+        resetBtn()
     }
+}
 
-    resetBtn()
-})
+)
 
 //evento vaciar carrito
 reset.addEventListener('click', () => {
     resetBtn()
     msg.innerHTML = "El carrito se encuentra vacio";
-
-    //ultima compra
-    lastBuy.innerHTML = "";
-    infoTotal.innerHTML = "";
-    info.style.display = "none";
 
     //alertify
     alertify.dismissAll();

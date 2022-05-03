@@ -130,7 +130,7 @@ function init() {
 }
 
 //fetch
-fetch('data/data.json')
+fetch('../data/data.json')
     .then((res) => res.json())
     .then((res) => {
         phoneList = res.productos[0].phoneList;
