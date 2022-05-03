@@ -1,38 +1,15 @@
-// listas de productos y precios que se usa para imprimir al seleccionar la categoria
-
-let phoneList = []
-let tabletList = []
-let displayList = []
-let tvList = []
-
-//array general
-let allProducts = [...phoneList, ...tabletList, ...displayList, ...tvList]
-
-//fetch
-fetch('data/data.json')
-    .then((res) => res.json())
-    .then((res) => {
-        phoneList = res.productos[0].phoneList;
-        tabletList = res.productos[1].tabletList;
-        displayList = res.productos[2].displayList;
-        tvList = res.productos[3].tvList;
-
-        allProducts = [...phoneList, ...tabletList, ...displayList, ...tvList]
-    })
-
 //elementos del html
 
 let products = document.querySelector("#products");
 let cartList = document.querySelector(".cart-list");
 let totalPrice = document.querySelector(".total");
-
 let buyBtn = document.querySelector("#buy");
 let reset = document.querySelector("#reset");
 let msg = document.querySelector(".msg");
-
-let cart = []
 let cartNum = document.querySelector(".nav-cart-num");
 
+//variables
+let cart = []
 let total = 0;
 
 //localStorage
@@ -58,6 +35,8 @@ storage.forEach(element => {
     totalPrice.innerHTML = `Total: $ ${storagePrice}`;
 });
 
+//funcion cantidad tototal de productos en carrito
+
 function totalQuantity() {
     cartNumCount = 0; //resetea por si se ejecuta mas de una ocacion
     cart.forEach(element => {
@@ -77,18 +56,7 @@ function cartStatus() {
     cart.length == 0 ? setTimeout(() => msg.style.filter = "opacity(1)", 500) : msg.style.filter = "opacity(0)";
 
 }
-
 cartStatus();
-
-//evento para comprar
-
-const info = document.querySelector('.last-buy-container');
-const lastBuy = document.querySelector('.lastBuy');
-
-const infoTotal = document.querySelector('.info-total');
-
-let lastTotal = 0;
-
 
 //funcion para eliminar producto con evento onclick
 
@@ -170,6 +138,12 @@ function productListQuantity(idList, idRemoved) {
     }
 }
 
+//evento para comprar
+
+const info = document.querySelector('.last-buy-container');
+const lastBuy = document.querySelector('.lastBuy');
+const infoTotal = document.querySelector('.info-total');
+
 buyBtn.addEventListener('click', () => {
     if (cart.length == 0) {
         //sweet alert
@@ -209,11 +183,8 @@ buyBtn.addEventListener('click', () => {
             lastBuy.appendChild(li);
             info.style.display = "flex";
 
-            lastTotal += element.price * element.cantidad; //acumula el total
-            infoTotal.innerHTML = ""; //resetea el texto del total
-            infoTotal.innerHTML += `Total: $ ${lastTotal}`;
+            infoTotal.innerHTML = `Total: $ ${total}`;
         });
-        lastTotal = 0; //resetea el total
 
         //alertify
         alertify.dismissAll();
@@ -302,3 +273,12 @@ window.addEventListener('click', (e) => {
         products.style = "filter: blur(0)";
     }
 })
+
+// guarda el id en el localStorage para luego cargar la tienda con la opcion elegida
+let initBtn = document.querySelectorAll('.init-btn');
+
+initBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        localStorage.setItem('init', btn.id)
+    })
+});

@@ -1,7 +1,8 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: cursive;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 500;
 }
 
 :root {
@@ -27,6 +28,7 @@ a {
 .icon-page {
   width: 3rem;
   margin: 0 0.5rem;
+  filter: drop-shadow(0.2rem 0.2rem 0.1rem #000);
 }
 
 .header-title {
@@ -34,6 +36,7 @@ a {
   color: var(--bg-color);
   text-shadow: 0.2rem 0.2rem 0.1rem #000;
   transition: all 0.3s;
+  font-weight: 800;
 }
 
 .nav-container {
@@ -381,6 +384,7 @@ a {
 #reset,
 #buy {
   font-size: 1rem;
+  font-weight: 800;
   pointer-events: all;
   background-color: var(--bg-color);
   color: #000;
@@ -555,12 +559,6 @@ a {
 
 /*media querys*/
 
-@media screen and (max-width: 350px) {
-  .products-price {
-    font-size: 1rem;
-  }
-}
-
 @media screen and (max-width: 400px) {
   .header-title {
     font-size: 2rem;
@@ -572,6 +570,10 @@ a {
 
   .categorys-list {
     justify-content: space-evenly;
+  }
+  .products-price {
+    font-size: 1rem;
+    bottom: 1.5rem;
   }
 }
 
@@ -637,6 +639,12 @@ a {
     position: absolute;
     top: 0.5rem;
     left: 2rem;
+    transition: all 0.2s;
+  }
+
+  .icon-page:hover {
+    transform: translate(0.2rem, 0.2rem);
+    filter: drop-shadow(0.2rem 0.2rem 1rem #000);
   }
 
   .header-title:hover {

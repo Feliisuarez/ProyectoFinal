@@ -1,6 +1,54 @@
+// al ir a la tienda se cargan mediante el localStorage la opcion elegida desde el home
+
+function init() {
+    let storageInit = localStorage.getItem("init")
+
+    if (storageInit == "phones" || storageInit == "phones-b") {
+        mostrarProductos(phoneList);
+        subtitle.innerHTML = "Telefonos"
+
+    } else if (storageInit == "tablets" || storageInit == "tablets-b") {
+        mostrarProductos(tabletList);
+        subtitle.innerHTML = "Tablets"
+
+    } else if (storageInit == "displays" || storageInit == "displays-b") {
+        mostrarProductos(displayList);
+        subtitle.innerHTML = "Monitores"
+
+    } else if (storageInit == "tvs" || storageInit == "tvs-b") {
+        mostrarProductos(tvList);
+        subtitle.innerHTML = "Televisores"
+    }
+}
+
+// listas de productos y precios que se usa para imprimir al seleccionar la categoria
+
+let phoneList = []
+let tabletList = []
+let displayList = []
+let tvList = []
+
+//array general
+let allProducts = [...phoneList, ...tabletList, ...displayList, ...tvList]
+
+//subtitulo
+let subtitle = document.querySelector(".subtitle");
+
+//fetch
+fetch('data/data.json')
+    .then((res) => res.json())
+    .then((res) => {
+        phoneList = res.productos[0].phoneList;
+        tabletList = res.productos[1].tabletList;
+        displayList = res.productos[2].displayList;
+        tvList = res.productos[3].tvList;
+
+        allProducts = [...phoneList, ...tabletList, ...displayList, ...tvList]
+
+        init();
+    })
 
 //evento para seleccionar una categoria
-let subtitle = document.querySelector(".subtitle");
 let button = document.querySelectorAll(".categorys-button");
 
 button.forEach(btn => {
@@ -12,18 +60,22 @@ button.forEach(btn => {
         if (btn.id == "phones") {
             mostrarProductos(phoneList);
             subtitle.innerHTML = "Telefonos"
+            localStorage.setItem('init', btn.id) //al recargar la pagina muestra los productos que se encontraban antes
 
         } else if (btn.id == "tablets") {
             mostrarProductos(tabletList);
             subtitle.innerHTML = "Tablets"
+            localStorage.setItem('init', btn.id) //al recargar la pagina muestra los productos que se encontraban antes
 
         } else if (btn.id == "displays") {
             mostrarProductos(displayList);
             subtitle.innerHTML = "Monitores"
+            localStorage.setItem('init', btn.id) //al recargar la pagina muestra los productos que se encontraban antes
 
         } else if (btn.id == "tvs") {
             mostrarProductos(tvList);
             subtitle.innerHTML = "Televisores"
+            localStorage.setItem('init', btn.id) //al recargar la pagina muestra los productos que se encontraban antes
         }
 
     });
