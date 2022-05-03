@@ -8,7 +8,7 @@ let reset = document.querySelector("#reset");
 let msg = document.querySelector(".msg");
 let cartNum = document.querySelector(".nav-cart-num");
 
-//variables
+//variables de carrito y precio
 let cart = []
 let total = 0;
 
@@ -35,7 +35,8 @@ storage.forEach(element => {
     totalPrice.innerHTML = `Total: $ ${storagePrice}`;
 });
 
-//funcion cantidad tototal de productos en carrito
+//funcion que actualiza la cantidad total de productos en el carrito
+let cartNumCount = 0;
 
 function totalQuantity() {
     cartNumCount = 0; //resetea por si se ejecuta mas de una ocacion
@@ -57,6 +58,33 @@ function cartStatus() {
 
 }
 cartStatus();
+
+//funcion que actualiza la cantidad de productos agregados de la lista
+function productListQuantity(idList, idRemoved) {
+    let productQuantity = cart.find(item => item.id == idList); //busca el producto en el carrito para sacar la cantidad 
+    let productsQuantity = document.querySelectorAll(".products-quantity")  //elemento html
+
+    if (productQuantity) { //si se encuentra en el carrito
+        productsQuantity.forEach(element => {
+            if (productQuantity.id == element.id) { //busca por id al elemento html para actualizarlo 
+                element.innerHTML = productQuantity.cantidad; //imprime
+
+                //estilos
+                element.style.display = "flex";
+            }
+        });
+    } else { //si se acaba de eliminar del carrito
+        productsQuantity.forEach(element => {
+            if (element.id == idRemoved) {
+                element.innerHTML = 0; //imprime
+
+                //estilos
+                element.previousElementSibling.previousElementSibling.style = "background-color: unset"
+                element.style.display = "none";
+            }
+        });
+    }
+}
 
 //funcion para eliminar producto con evento onclick
 
@@ -111,31 +139,28 @@ function removeF(idList, cantidadStorage) {
     localStorage.setItem("total", JSON.stringify(total));
 }
 
-//funcion que actualiza la cantidad de productos agregados de la lista
-function productListQuantity(idList, idRemoved) {
-    let productQuantity = cart.find(item => item.id == idList); //busca el producto en el carrito para sacar la cantidad 
-    let productsQuantity = document.querySelectorAll(".products-quantity")  //elemento html
+//funcion vaciar carrito
+function resetBtn() {
+    cart = [];
+    cartList.innerHTML = "";
+    total = 0;
+    totalPrice.innerHTML = `Total: $ ${total}`;
 
-    if (productQuantity) { //si se encuentra en el carrito
-        productsQuantity.forEach(element => {
-            if (productQuantity.id == element.id) { //busca por id al elemento html para actualizarlo 
-                element.innerHTML = productQuantity.cantidad; //imprime
+    totalQuantity();//actualiza la cantidad
 
-                //estilos
-                element.style.display = "flex";
-            }
-        });
-    } else { //si se acaba de eliminar del carrito
-        productsQuantity.forEach(element => {
-            if (element.id == idRemoved) {
-                element.innerHTML = 0; //imprime
+    //resetea todas las cantidades de los productos en lista
+    let productsQuantity = document.querySelectorAll(".products-quantity")
+    productsQuantity.forEach(element => {
+        element.innerHTML = 0;
+        //estilos
+        element.style.display = "none";
+        element.previousElementSibling.previousElementSibling.style = "background-color: unset"
+    });
 
-                //estilos
-                element.previousElementSibling.previousElementSibling.style = "background-color: unset"
-                element.style.display = "none";
-            }
-        });
-    }
+    cartStatus();
+    //actualiza el storage
+    localStorage.setItem("carrito", JSON.stringify(cart));
+    localStorage.setItem("total", JSON.stringify(total));
 }
 
 //evento para comprar
@@ -166,6 +191,7 @@ buyBtn.addEventListener('click', () => {
         Swal.fire({
             icon: 'success',
             title: 'Compra realizada!',
+            confirmButtonColor: "var(--secondary-color)",
         })
 
         //ultima compra
@@ -208,30 +234,6 @@ reset.addEventListener('click', () => {
     alertify.dismissAll();
     alertify.warning('Se a vaciado el carrito');
 })
-
-//funcion vaciar carrito
-function resetBtn() {
-    cart = [];
-    cartList.innerHTML = "";
-    total = 0;
-    totalPrice.innerHTML = `Total: $ ${total}`;
-
-    totalQuantity();//actualiza la cantidad
-
-    //resetea todas las cantidades de los productos en lista
-    let productsQuantity = document.querySelectorAll(".products-quantity")
-    productsQuantity.forEach(element => {
-        element.innerHTML = 0;
-        //estilos
-        element.style.display = "none";
-        element.previousElementSibling.previousElementSibling.style = "background-color: unset"
-    });
-
-    //actualiza el storage
-    cartStatus();
-    localStorage.setItem("carrito", JSON.stringify(cart));
-    localStorage.setItem("total", JSON.stringify(total));
-}
 
 //menu 
 
