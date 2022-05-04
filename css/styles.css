@@ -492,7 +492,7 @@ a {
 .ajs-message {
   border-radius: 1rem !important;
   padding: 1rem 0 !important;
-  right: 25vw !important;
+  right: 23vw !important;
   box-shadow: 0.5rem -0.5rem 0.5rem #0005 !important;
 }
 
@@ -731,7 +731,7 @@ a {
       "categorys products products"
       "categorys products products";
     grid-template-rows: auto auto auto;
-    grid-template-columns: 20vw auto auto;
+    grid-template-columns: 25vw auto auto;
   }
 
   /*categorys*/
