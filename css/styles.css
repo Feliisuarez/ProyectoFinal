@@ -567,6 +567,12 @@ a {
 
 /*media querys*/
 
+@media screen and (orientation: landscape) and (max-width: 1000px) {
+  .categorys-button {
+    font-size: 1rem;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .header-title {
     font-size: 2rem;

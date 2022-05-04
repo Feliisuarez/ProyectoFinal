@@ -3,6 +3,10 @@ div ul li a:visited {
   font-weight: 500;
 }
 
+ul {
+  padding-left: 0;
+}
+
 /*header*/
 
 .nav-cart-num {

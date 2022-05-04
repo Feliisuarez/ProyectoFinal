@@ -186,7 +186,6 @@ buyBtn.addEventListener('click', () => {
     } else {
 
         //sweet alert
-
         Swal.fire({
             icon: 'success',
             title: 'Gracias por su compra',
@@ -200,7 +199,7 @@ buyBtn.addEventListener('click', () => {
 
         //imprime la ultima compra
         cart.forEach(element => {
-            let src = allProducts.find(item => item.id == element.id); //busca por id en el array general para conseguir la imagen
+            let src = cart.find(item => item.id == element.id); //busca por id en el array general para conseguir la imagen
 
             let li = document.createElement("li");
             li.innerHTML += `<span class="quantity">${element?.cantidad}</span> <img src=${src.src} alt="producto en carrito" class="cart-imgs"> ${element?.name} : $${element?.price}`;
